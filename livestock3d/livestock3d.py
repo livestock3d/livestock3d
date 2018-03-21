@@ -5,6 +5,8 @@ __license__ = "MIT"
 # Imports
 
 # Module imports
+import numpy as np
+import matplotlib.pyplot as plt
 
 # Livestock imports
 
@@ -30,5 +32,16 @@ def my_function(folder):
         result_file.write(line_to_write + '\n')
 
     result_file.close()
+
+    return None
+
+
+def plot_graph(folder):
+    y_values = np.loadtxt(folder + '/data_file.txt')
+    x_values = np.linspace(0, len(y_values), len(y_values))
+
+    plt.figure()
+    plt.plot(x_values, y_values)
+    plt.savefig(folder + '/plot.png')
 
     return None

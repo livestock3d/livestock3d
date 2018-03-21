@@ -18,6 +18,10 @@ def pick_template(template_name, path):
     if template_name == 'my_first_template':
         my_first_template(path)
 
+    elif template_name == 'plot_graph':
+        plot_graph(path)
+
+
     else:
         raise NameError('Could not find template: ' + str(template_name))
 
@@ -43,6 +47,34 @@ def my_first_template(path):
 
     file.write("# Run function\n")
     file.write("ls.my_function(r'" + path + "')\n")
+
+    file.write("# Announce that template finished and create out file\n")
+    file.write("print('Finished with template')\n")
+
+    file.close()
+
+    return file_name
+
+
+def plot_graph(path):
+    """
+    Writes a template.
+
+    :param path: Path to write it to.
+    :type path: str
+    :return: The file name
+    """
+
+    file_name = r'/plot_graph_template.py'
+    file = open(path + file_name, 'w')
+
+    file.write("# Imports\n")
+    file.write("import sys\n")
+    file.write("sys.path.insert(0, r'C:\livestock3d')\n")
+    file.write("import livestock3d as ls\n")
+
+    file.write("# Run function\n")
+    file.write("ls.plot_graph(r'" + path + "')\n")
 
     file.write("# Announce that template finished and create out file\n")
     file.write("print('Finished with template')\n")
