@@ -16,15 +16,19 @@ __license__ = "MIT"
 
 def my_function(folder):
 
-    file = open(folder + '/my_file.txt', 'r')
+    file = open(folder + '/data_file.txt', 'r')
     my_lines = [line.strip()
                 for line in file.readlines()]
-
     file.close()
-    print(my_lines)
 
-    result_file = open(folder + '/my_result.txt', 'w')
-    [result_file.write(line) for line in my_lines]
+    repeat = int(my_lines[1].strip())
+    line_to_write = my_lines[0].strip()
+
+    result_file = open(folder + '/result.txt', 'w')
+
+    for i in range(repeat):
+        result_file.write(line_to_write + '\n')
+
     result_file.close()
 
     return None
