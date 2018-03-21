@@ -33,7 +33,7 @@ def my_first_template(path):
     :return: The file name
     """
 
-    file_name = r'/my_firsts_template.py'
+    file_name = r'/my_first_template.py'
     file = open(path + file_name, 'w')
 
     file.write("# Imports\n")
