@@ -36,12 +36,12 @@ def my_function(folder):
     return None
 
 
-def plot_graph(folder):
-    y_values = np.loadtxt(folder + '/data_file.txt')
+def plot_graph():
+    y_values = np.loadtxt('data_file.txt')
     x_values = np.linspace(0, len(y_values), len(y_values))
 
     plt.figure()
     plt.plot(x_values, y_values)
-    plt.savefig(folder + '/plot.png')
+    plt.savefig('plot.png')
 
     return None

@@ -2,6 +2,9 @@ __author__ = "Christian Kongsgaard"
 __license__ = "MIT"
 
 # -------------------------------------------------------------------------------------------------------------------- #
+# Imports
+
+# -------------------------------------------------------------------------------------------------------------------- #
 # Livestock Templates Functions
 
 
@@ -21,7 +24,9 @@ def pick_template(template_name, path):
     elif template_name == 'plot_graph':
         plot_graph(path)
 
-
+    elif template_name == 'ssh':
+        ssh_template(path)
+        
     else:
         raise NameError('Could not find template: ' + str(template_name))
 
@@ -70,15 +75,47 @@ def plot_graph(path):
 
     file.write("# Imports\n")
     file.write("import sys\n")
-    file.write("sys.path.insert(0, r'C:\livestock3d')\n")
+    file.write("import platform\n")
+    file.write("from pathlib import Path\n")
+
+    file.write("system = platform.system()\n")
+    file.write("if system == 'Windows':\n")
+    file.write("    sys.path.insert(0, r'C:\livestock3d')\n")
+    file.write("elif system == 'Linux':\n")
+    file.write("    sys.path.insert(0, str(Path.home()) + '/livestock3d' )\n")
+
     file.write("import livestock3d as ls\n")
 
     file.write("# Run function\n")
-    file.write("ls.plot_graph(r'" + path + "')\n")
+    file.write("ls.plot_graph()\n")
 
     file.write("# Announce that template finished and create out file\n")
     file.write("print('Finished with template')\n")
-
+    file.write("file = open('out.txt', 'w')\n")
+    file.write("file.close()\n")
     file.close()
 
     return file_name
+
+
+def ssh_template(path):
+    """
+    Writes the ssh template.
+
+    :param path: Path to write it to.
+    """
+
+    file_name = r'/ssh_template.py'
+    file = open(path + file_name, 'w')
+
+    file.write("# Imports\n")
+    file.write("import sys\n")
+    file.write("sys.path.insert(0, r'C:\livestock3d')\n")
+    file.write("import ssh\n")
+
+    file.write("# Run function\n")
+    file.write("ssh.ssh_connection()\n")
+
+    file.close()
+
+    return True
