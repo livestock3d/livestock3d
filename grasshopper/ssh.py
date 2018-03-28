@@ -72,7 +72,7 @@ def write_ssh_commands(ssh_dict):
     ssh_file.write(str(ssh_dict['password']) + '\n')
     ssh_file.write(str(ssh_dict['file_transfer']) + '\n')
     ssh_file.write(str(ssh_dict['file_run']) + '\n')
-    ssh_file.write(str(ssh_dict['file_return']) + '\n')
+    ssh_file.write(str(ssh_dict['file_return']))
     ssh_file.close()
 
     # Write templates
