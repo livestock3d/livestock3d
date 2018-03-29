@@ -9,3 +9,5 @@ Livestock Package for CPython
 * Take "My GH Script.gh" and place it on the Desktop or wherever you like. 
 * Create a folder called C:\livestock3d
 * Put the files from the folder livestock3d there.
+
+More details about the Livestock project can be found [here](https://livestock3d.github.io/pages/how-is-it-working.html)
